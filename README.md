@@ -40,7 +40,7 @@ export GITHUB_TOKEN=your_access_token
 or 
 ```bash
 export GITHUB_USERNAME=DeliverApp
-export GITHUB_TOKEN=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 // expire every 90 days, ask for faster regeneration
+export GITHUB_TOKEN=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 // expire every 90 days, ask for faster regeneration
 ```
 
 ### Windows
@@ -51,7 +51,7 @@ set GITHUB_TOKEN=your_access_token
 or
 ```bash
 set GITHUB_USERNAME=DeliverApp
-set GITHUB_TOKEN=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 // expire every 90 days, ask for faster regeneration
+set GITHUB_TOKEN=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 // expire every 90 days, ask for faster regeneration
 ```
 
 ## Step 3: Add the Library Dependency
