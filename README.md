@@ -2,7 +2,9 @@
 
 This guide explains how to add our Android library, hosted on GitHub Packages, to your Android project.
 
-## Step 1: Add the GitHub Packages Repository to `settings.gradle.kts`
+## With Maven (need a Github Personnal Access Token)
+
+### Step 1: Add the GitHub Packages Repository to `settings.gradle.kts`
 
 To access the DeliverApp library from GitHub Packages, add the Maven repository to your `settings.gradle.kts` file:
 
@@ -24,7 +26,7 @@ pluginManagement {
 }
 ```
 
-## Step 2: Use Environment Variable for GitHub Username and Token
+### Step 2: Use Environment Variable for GitHub Username and Token
 
 GitHub Packages use Personal access tokens to download package unless the repository is public.
 If you already has a token with **read:packages** privilege, you can use it.
@@ -32,7 +34,7 @@ If not, you could set a new token by visit https://github.com/settings/tokens.
 Finally, if you really don't want to create your own token, Deliver offers you a token you can use.
 Be careful, it expires every 90 days.
 
-### MacOS / Linux
+#### MacOS / Linux
 ```bash
 export GITHUB_USERNAME=your_username
 export GITHUB_TOKEN=your_access_token
@@ -43,7 +45,7 @@ export GITHUB_USERNAME=DeliverApp
 export GITHUB_TOKEN=`Ask contact@deliverapp.io for the token` // expire every 90 days, ask for faster regeneration
 ```
 
-### Windows
+#### Windows
 ```bash
 set GITHUB_USERNAME=your_username
 set GITHUB_TOKEN=your_access_token
@@ -54,7 +56,7 @@ set GITHUB_USERNAME=DeliverApp
 set GITHUB_TOKEN=`Ask contact@deliverapp.io for the token`  // expire every 90 days, ask for faster regeneration
 ```
 
-## Step 3: Add the Library Dependency
+### Step 3: Add the Library Dependency
 
 ```kotlin
 // build.gradle.kts
@@ -64,7 +66,26 @@ dependencies {
 }
 ```
 
-## Step 4: How to use it
+## Include the aar in libs folder
+
+### Step 1: Download the aar from Github
+
+Please visit https://github.com/DeliverApp/Android/packages/2307877 and download the aar in the right side panel.
+The name is sdk-`latest`.aar.
+
+You have to put it in a folder of your choice, for the exemple, I put it in libs folder.
+
+### Step 2: Add the libs folder as dependency
+
+```kotlin
+// build.gradle.kts
+
+dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+}
+```
+
+## How to use it
 
 Deliver Android SDK provide two initialize methods you could use in your Android Application.
 First, Find your apiKey on https://deliverapp.io/store/app/:appId/details (TODO).
